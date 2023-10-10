@@ -1,0 +1,50 @@
+swagger: "2.0"
+info:
+  title: "My Cloud Function API"
+  version: "1.0.0"
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: function_url
+paths:
+  /:
+    get:
+      summary: "index"
+      operationId: index
+      responses:
+        200:
+          description: "Successful response from Index"
+          schema:
+            type: string
+  /route1:
+    get:
+      summary: "Route 1"
+      operationId: route1
+      responses:
+        200:
+          description: "Successful response from Route 1"
+          schema:
+            type: string
+  /route2:
+    post:
+      summary: "Route 2"
+      operationId: route2
+      parameters:
+        - name: requestBody
+          in: body
+          description: Request body for creating data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+      responses:
+        200:
+          description: "Successful response from Route 2"
+          schema:
+            type: string
+      security:
+        - apiKey: []
